@@ -676,7 +676,132 @@ button, input, textarea, select {
     color: var(--secondary);
     flex-shrink: 0;
 }
+/* ==========================================================================
+   Principios Físicos
+   ========================================================================== */
 
+.physics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.physics-card {
+    padding: 35px;
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.physics-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-glow);
+}
+
+.physics-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.physics-title {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.physics-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Línea de Tiempo
+   ========================================================================== */
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    width: 50%;
+    padding: 20px 40px;
+    position: relative;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+.timeline-content {
+    padding: 20px;
+}
+
+.timeline-year {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--secondary);
+    border-radius: 50%;
+    top: 30px;
+    right: -9px;
+}
+
+.timeline-item.right::after {
+    left: -9px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .physics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item,
+    .timeline-item.right,
+    .timeline-item.left {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding-left: 60px;
+        padding-right: 20px;
+    }
+
+    .timeline-item::after,
+    .timeline-item.right::after {
+        left: 11px;
+        right: auto;
+    }
+}
 /* ==========================================================================
    Sección Impacto y Estadísticas
    ========================================================================== */
