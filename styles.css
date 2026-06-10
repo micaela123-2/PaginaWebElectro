@@ -738,6 +738,7 @@ button, input, textarea, select {
     width: 50%;
     padding: 20px 40px;
     position: relative;
+    margin-bottom: 30px;
 }
 
 .timeline-item.left {
@@ -747,6 +748,21 @@ button, input, textarea, select {
 
 .timeline-item.right {
     left: 50%;
+    text-align: left;
+}
+.timeline-date {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.timeline-item.left .timeline-date {
+    text-align: right;
+}
+
+.timeline-item.right .timeline-date {
+    text-align: left;
 }
 
 .timeline-content {
