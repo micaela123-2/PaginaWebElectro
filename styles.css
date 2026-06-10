@@ -691,7 +691,6 @@ button, input, textarea, select {
     padding:35px;
     text-align:center;
     transition:var(--transition-normal);
-
     height:100%;
     display:flex;
     flex-direction:column;
