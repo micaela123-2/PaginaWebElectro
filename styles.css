@@ -680,37 +680,60 @@ button, input, textarea, select {
    Principios Físicos
    ========================================================================== */
 
-.physics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.physics-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    align-items:stretch;
 }
 
-.physics-card {
-    padding: 35px;
-    text-align: center;
-    transition: var(--transition-normal);
+.physics-card{
+    padding:35px;
+    text-align:center;
+    transition:var(--transition-normal);
+
+    height:100%;
+    display:flex;
+    flex-direction:column;
 }
 
-.physics-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-glow);
+.physics-card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow-glow);
 }
 
-.physics-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
+.physics-icon{
+    font-size:3rem;
+    margin-bottom:20px;
 }
 
-.physics-title {
-    color: var(--primary);
-    margin-bottom: 15px;
-    font-size: 1.3rem;
+.physics-title{
+    color:var(--primary);
+    margin-bottom:15px;
+    font-size:1.3rem;
 }
 
-.physics-desc {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+.physics-desc{
+    color:var(--text-secondary);
+    font-size:0.95rem;
+}
+
+/* Tablets */
+@media (max-width:1200px){
+
+    .physics-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* Celulares */
+@media (max-width:768px){
+
+    .physics-grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
 /* ==========================================================================
