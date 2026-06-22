@@ -740,6 +740,23 @@ button, input, textarea, select {
         max-width:400px;
     }
 }
+.monitor-panel{
+    padding:40px;
+    margin-top:40px;
+}
+
+.live-voltage{
+    font-size:3rem;
+    font-weight:700;
+    color:var(--primary);
+    text-align:center;
+    margin:20px 0;
+}
+
+#voltageChart{
+    width:100%;
+    max-height:400px;
+}
 
 /* ==========================================================================
    Principios Físicos
