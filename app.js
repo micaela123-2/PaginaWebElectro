@@ -199,3 +199,94 @@ function initContactForm() {
         }, 5000);
     });
 }
+let port;
+let reader;
+
+const data = [];
+const labels = [];
+
+const ctx = document.getElementById("voltageChart");
+
+const chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "Voltaje (V)",
+            data: data,
+            tension: 0.3
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: false,
+        scales: {
+            y: {
+                min: 0,
+                max: 5
+            }
+        }
+    }
+});
+
+document.getElementById("connectBtn")
+.addEventListener("click", connectArduino);
+
+async function connectArduino() {
+
+    try {
+
+        port = await navigator.serial.requestPort();
+
+        await port.open({
+            baudRate: 9600
+        });
+
+        const decoder = new TextDecoderStream();
+
+        port.readable.pipeTo(decoder.writable);
+
+        reader = decoder.readable.getReader();
+
+        let tiempo = 0;
+
+        while (true) {
+
+            const { value, done } =
+                await reader.read();
+
+            if (done) break;
+
+            const lines = value.split("\n");
+
+            lines.forEach(line => {
+
+                const voltaje =
+                    parseFloat(line.trim());
+
+                if (!isNaN(voltaje)) {
+
+                    document.getElementById(
+                        "voltageValue"
+                    ).textContent =
+                        voltaje.toFixed(2);
+
+                    labels.push(tiempo++);
+
+                    data.push(voltaje);
+
+                    if (data.length > 50) {
+                        data.shift();
+                        labels.shift();
+                    }
+
+                    chart.update();
+                }
+
+            });
+        }
+
+    } catch(err) {
+        console.error(err);
+    }
+}
