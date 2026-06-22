@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize Mobile Hamburger Menu
     initMobileMenu();
     
-    // Initialize Stats Counter Animation
-    initStatsCounter();
-    
     // Initialize Contact Form
     initContactForm();
 });
