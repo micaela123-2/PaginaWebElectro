@@ -273,20 +273,22 @@
     </div>
 </section>
                 <!------Voltaje en tiempo real grafico------>
-                <section id="monitoreo" class="section-padding">
-    <div class="container">
+                <div class="monitor-panel glassmorphism">
 
-        <div class="section-header text-center">
-            <h2 class="section-title">Monitoreo de Voltaje</h2>
-            <p class="section-subtitle">
-                Visualización de la energía generada por el prototipo.
-            </p>
-        </div>
+    <h3>Monitoreo en Tiempo Real</h3>
 
-        <canvas id="voltageChart"></canvas>
+    <button id="connectBtn" class="btn btn-primary">
+        Conectar Arduino
+    </button>
 
+    <div class="live-voltage">
+        <span id="voltageValue">0.00</span> V
     </div>
-</section>
+
+    <canvas id="voltageChart"></canvas>
+
+</div>
+    <!------Vision------>
           <section class="vision-section section-padding">
 
     <div class="container">
@@ -829,7 +831,7 @@
 
 <!-- JavaScript -->
 <script src="app.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
  
