@@ -102,52 +102,73 @@ function generateLiveDashboardData() {
    ========================================================================== */
 function initStatsCounter() {
     const statsSection = document.getElementById("impacto");
+
+    if (!statsSection) return;
+
     const statNumbers = document.querySelectorAll(".stat-number");
-    
     let animated = false;
-    
+
     const countUp = (element) => {
-        const target = parseFloat(element.getAttribute("data-target"));
-        const suffix = element.getAttribute("data-suffix") || "";
-        const isDecimal = element.getAttribute("data-decimal") === "true";
-        
+
+        const target = parseFloat(element.dataset.target);
+        const suffix = element.dataset.suffix || "";
+        const isDecimal = element.dataset.decimal === "true";
+
+        // Evita NaN
+        if (isNaN(target)) return;
+
         let current = 0;
-        const duration = 2000; // 2 seconds
-        const stepTime = 16; // approx 60fps
-        const steps = duration / stepTime;
-        const increment = target / steps;
-        
+        const duration = 2000;
+        const fps = 60;
+        const totalFrames = duration / (1000 / fps);
+        const increment = target / totalFrames;
+
         const timer = setInterval(() => {
+
             current += increment;
+
             if (current >= target) {
-                element.textContent = (isDecimal ? target.toFixed(1) : Math.floor(target).toLocaleString('es-ES')) + suffix;
+
+                element.textContent =
+                    (isDecimal
+                        ? target.toFixed(1)
+                        : Math.round(target).toLocaleString("es-CL"))
+                    + suffix;
+
                 clearInterval(timer);
+
             } else {
-                element.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString('es-ES')) + suffix;
+
+                element.textContent =
+                    (isDecimal
+                        ? current.toFixed(1)
+                        : Math.round(current).toLocaleString("es-CL"))
+                    + suffix;
             }
-        }, stepTime);
+
+        }, 1000 / fps);
     };
-    
-    const observerOptions = {
-        root: null,
-        threshold: 0.3
-    };
-    
-    const observer = new IntersectionObserver((entries, observer) => {
+
+    const observer = new IntersectionObserver((entries) => {
+
         entries.forEach(entry => {
+
             if (entry.isIntersecting && !animated) {
-                statNumbers.forEach(num => countUp(num));
+
+                statNumbers.forEach(countUp);
+
                 animated = true;
                 observer.unobserve(entry.target);
             }
-        });
-    }, observerOptions);
-    
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
-}
 
+        });
+
+    }, {
+        threshold: 0.3
+    });
+
+    observer.observe(statsSection);
+}
 /* ==========================================================================
    Formulario de Contacto Premium
    ========================================================================== */
