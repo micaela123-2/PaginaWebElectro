@@ -1516,3 +1516,46 @@ button, input, textarea, select {
         padding: 24px;
     }
 }
+/* ==========================================================================
+   MONITOREO EN TIEMPO REAL
+   ========================================================================== */
+
+.monitor-panel{
+    padding:40px;
+}
+
+.live-voltage{
+    font-size:4rem;
+    font-weight:700;
+    text-align:center;
+    margin:20px 0;
+    color: var(--primary);
+}
+
+.system-status{
+    text-align:center;
+    font-size:1.2rem;
+    margin-bottom:20px;
+}
+
+.energy-card{
+    text-align:center;
+    margin-bottom:30px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+}
+
+.energy-card h3{
+    margin-bottom:10px;
+}
+
+.energy-card span{
+    font-size:2rem;
+    font-weight:700;
+}
+
+#voltageChart{
+    width:100%;
+    height:400px !important;
+}
