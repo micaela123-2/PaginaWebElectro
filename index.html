@@ -37,6 +37,7 @@
                     <li><a href="#tecnologia" class="nav-link">Tecnología</a></li>
                     <li><a href="#impacto" class="nav-link">Impacto</a></li>
                     <li><a href="#contacto" class="nav-link">Nosotros</a></li>
+                    <li><a href="#monitoreo" class="nav-link">Monitoreo</a></li>
                     <li class="nav-btn"><a href="#portal" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Acceder</a></li>
                 </ul>
             </nav>
@@ -464,21 +465,46 @@
     </div>
 </section>
      <!------Voltaje en tiempo real grafico------>
-                <div class="monitor-panel glassmorphism">
+              <section id="monitoreo" class="section-padding">
 
-    <h3>Monitoreo en Tiempo Real</h3>
+    <div class="container">
 
-    <button id="connectBtn" class="btn btn-primary">
-        Conectar Arduino
-    </button>
+        <div class="section-header text-center">
+            <h2 class="section-title">
+                Monitoreo en Tiempo Real
+            </h2>
 
-    <div class="live-voltage">
-        <span id="voltageValue">0.00</span> V
+            <p class="section-subtitle">
+                Visualización en vivo del voltaje generado por el prototipo Ener-Wave.
+            </p>
+        </div>
+
+        <div class="monitor-panel glassmorphism">
+
+            <button id="connectBtn" class="btn btn-primary">
+                Conectar Arduino
+            </button>
+
+            <div class="live-voltage">
+                <span id="voltageValue">0.00</span> V
+            </div>
+
+            <div class="system-status">
+                🟢 Generando Energía
+            </div>
+
+            <div class="energy-card">
+                <h3>Voltaje Máximo</h3>
+                <span id="maxVoltage">0.00 V</span>
+            </div>
+
+            <canvas id="voltageChart"></canvas>
+
+        </div>
+
     </div>
 
-    <canvas id="voltageChart"></canvas>
-
-</div>
+</section>
     
 <!-- ==========================================================================
      LÍNEA DE TIEMPO DEL PROYECTO
@@ -663,9 +689,7 @@
 
     </div>
 </section>
-    <!-- ==========================================================================
-         SECCIÓN CONTACTO
-         ========================================================================== -->
+
     <!-- ==========================================================================
      SECCIÓN INFORMACIÓN DEL PROYECTO
      ========================================================================== -->
@@ -827,9 +851,6 @@
         </div>
     </div>
 </footer>
-
-<!-- Librería para el gráfico -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- JavaScript -->
 <script src="app.js"></script>
