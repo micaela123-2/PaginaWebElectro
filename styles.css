@@ -1559,3 +1559,51 @@ button, input, textarea, select {
     width:100%;
     height:400px !important;
 }
+/* ========================================
+   Simulación de la Boya
+======================================== */
+
+.simulacion-boya{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.mar{
+    position:relative;
+    width:100%;
+    height:400px;
+    background:linear-gradient(to bottom,#87CEEB,#1565C0);
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.boya{
+    position:absolute;
+    width:180px;
+    left:50%;
+    bottom:100px;
+    transform:translateX(-50%);
+    animation:flotar 4s ease-in-out infinite;
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateX(-50%) translateY(0px) rotate(-5deg);
+    }
+
+    25%{
+        transform:translateX(-50%) translateY(-20px) rotate(3deg);
+    }
+
+    50%{
+        transform:translateX(-50%) translateY(0px) rotate(5deg);
+    }
+
+    75%{
+        transform:translateX(-50%) translateY(15px) rotate(-3deg);
+    }
+
+    100%{
+        transform:translateX(-50%) translateY(0px) rotate(-5deg);
+    }
+}
