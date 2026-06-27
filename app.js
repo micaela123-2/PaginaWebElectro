@@ -320,25 +320,29 @@ async function connectMPU() {
             if (done) break;
 
             const lines = value.split("\n");
+lines.forEach(line => {
 
-            lines.forEach(line => {
+    console.log("Dato recibido:", line);
 
-                const partes = line.trim().split(",");
+    const partes = line.trim().split(",");
 
-                if (partes.length === 2) {
+    console.log(partes);
 
-                    const x = parseFloat(partes[0]);
-                    const y = parseFloat(partes[1]);
+    if (partes.length === 2) {
 
-                    if (!isNaN(x) && !isNaN(y)) {
+        const x = parseFloat(partes[0]);
+        const y = parseFloat(partes[1]);
 
-                        moverBoya(x, y);
+        console.log("X =", x, "Y =", y);
 
-                    }
-                }
+        if (!isNaN(x) && !isNaN(y)) {
 
-            });
+            moverBoya(x, y);
 
+        }
+    }
+
+});
         }
 
     } catch (err) {
