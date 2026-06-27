@@ -299,5 +299,13 @@ function moverBoya(x, y){
     boya.style.transform =
         `translateX(-50%)
          translateY(${-y * 20}px)
-         rotate(${x * 5}deg)`;
+         rotate(${x * 10}deg)`;
 }
+setInterval(() => {
+
+    const x = (Math.random() - 0.5) * 4;
+    const y = (Math.random() - 0.5) * 4;
+
+    moverBoya(x, y);
+
+}, 500);
