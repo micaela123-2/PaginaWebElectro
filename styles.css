@@ -1589,7 +1589,7 @@ button, input, textarea, select {
     bottom:60px;
     z-index:10;
 
-    animation:flotar 4s ease-in-out infinite;
+    transform:translateX(-50%);
 }
 .ola{
     position:absolute;
