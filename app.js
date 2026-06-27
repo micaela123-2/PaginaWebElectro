@@ -315,6 +315,7 @@ async function connectMPU() {
         while (true) {
 
             const { value, done } = await reader.read();
+           console.log(value);
 
             if (done) break;
 
