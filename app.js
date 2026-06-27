@@ -231,6 +231,8 @@ const chart = new Chart(ctx, {
 
 document.getElementById("connectBtn")
 .addEventListener("click", connectArduino);
+document.getElementById("connectMPUBtn")
+.addEventListener("click", connectMPU);
 
 async function connectArduino() {
 
@@ -294,4 +296,54 @@ function moverBoya(x, y){
          translateY(${-y * 20}px)
          rotate(${x * 10}deg)`;
 }
+async function connectMPU() {
 
+    try {
+
+        const portMPU = await navigator.serial.requestPort();
+
+        await portMPU.open({
+            baudRate: 9600
+        });
+
+        const decoder = new TextDecoderStream();
+
+        portMPU.readable.pipeTo(decoder.writable);
+
+        const reader = decoder.readable.getReader();
+
+        while (true) {
+
+            const { value, done } = await reader.read();
+
+            if (done) break;
+
+            const lines = value.split("\n");
+
+            lines.forEach(line => {
+
+                const partes = line.trim().split(",");
+
+                if (partes.length === 2) {
+
+                    const x = parseFloat(partes[0]);
+                    const y = parseFloat(partes[1]);
+
+                    if (!isNaN(x) && !isNaN(y)) {
+
+                        moverBoya(x, y);
+
+                    }
+                }
+
+            });
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+
+    }
+
+}
