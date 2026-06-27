@@ -259,31 +259,24 @@ async function connectArduino() {
 
             const lines = value.split("\n");
 
-            lines.forEach(line => {
+           lines.forEach(line => {
 
-                const voltaje =
-                    parseFloat(line.trim());
+    const partes = line.trim().split(",");
 
-                if (!isNaN(voltaje)) {
+    if(partes.length === 2){
 
-                    document.getElementById(
-                        "voltageValue"
-                    ).textContent =
-                        voltaje.toFixed(2);
+        const x = parseFloat(partes[0]);
+        const y = parseFloat(partes[1]);
 
-                    labels.push(tiempo++);
+        if(!isNaN(x) && !isNaN(y)){
 
-                    data.push(voltaje);
+            moverBoya(x, y);
 
-                    if (data.length > 50) {
-                        data.shift();
-                        labels.shift();
-                    }
+            console.log("X:", x, "Y:", y);
+        }
+    }
 
-                    chart.update();
-                }
-
-            });
+});
         }
 
     } catch(err) {
