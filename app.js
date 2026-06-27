@@ -290,3 +290,14 @@ async function connectArduino() {
         console.error(err);
     }
 }
+function moverBoya(x, y){
+
+    const boya = document.getElementById("boyaReal");
+
+    if(!boya) return;
+
+    boya.style.transform =
+        `translateX(-50%)
+         translateY(${-y * 20}px)
+         rotate(${x * 5}deg)`;
+}
