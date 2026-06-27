@@ -301,11 +301,4 @@ function moverBoya(x, y){
          translateY(${-y * 20}px)
          rotate(${x * 10}deg)`;
 }
-setInterval(() => {
 
-    const x = (Math.random() - 0.5) * 4;
-    const y = (Math.random() - 0.5) * 4;
-
-    moverBoya(x, y);
-
-}, 500);
