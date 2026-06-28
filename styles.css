@@ -285,8 +285,10 @@ button, input, textarea, select {
 }
 
 .logo-img {
-    width: 120px;
-    height: auto;
+    height: 60px;
+    width: auto;
+    border-radius: 0;
+    object-fit: contain;
 }
 
 .nav-menu {
