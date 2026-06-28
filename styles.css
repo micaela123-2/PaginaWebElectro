@@ -285,12 +285,8 @@ button, input, textarea, select {
 }
 
 .logo-img {
-    height: 50px;
-    width: auto;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--primary);
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+    width: 120px;
+    height: auto;
 }
 
 .nav-menu {
